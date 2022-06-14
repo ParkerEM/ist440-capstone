@@ -41,9 +41,9 @@ class Card extends LitElement {
 
 	render() {
 		return html`
-			<label id="phrase" name="phrase">${this.phrase}</label>
-			<button id="option1">${options[0].value}</button> 
-			<button id="option2">${options.getvalue[1]}</button>
+			<label id="phrase" name="phrase">${this.phrase} Question</label>
+			<button id="option1">${options[0].value} Yes</button> 
+			<button id="option2">${options.getvalue[1]} No</button>
 		`
 	}
 }
