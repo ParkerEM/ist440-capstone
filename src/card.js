@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import '@lrnwebcomponents/accent-card/accent-card.js';
 
 class Card extends LitElement {
 	static get properties() {
@@ -7,6 +8,7 @@ class Card extends LitElement {
 			phrase: { type: String },
 			num_Options: {},
 			options: { type: Array },
+			card_info: { type: Array },
 		}
 	}
 
@@ -15,7 +17,8 @@ class Card extends LitElement {
 		this.phrase = 'Do you know what you want?';
 		this.endpoint = '/api/';
 		this.num_Options = 2;
-		this.options = {Yes, No};
+		this.options = [Yes, No];
+		this.card_info = [];
 	}
 
 	updated(changedProperties) {
@@ -26,24 +29,57 @@ class Card extends LitElement {
 		});
 	}
 
-	static getCard(input,) {
+	static getCard(input) {
 		this.phrase = input;
+		this.card_info = input;
+	}
 
+	async loadCard() {
+		await fetch(this.endpoint).then(res => res.json())
+		.then(data => {
+			this.card_info = [];
+			const results = {
+				phrase: data.phrase.value,
+				num_Options: data.num_Options.value,
+				options: data.options,
+			}
+			this.card_info.push(results);
+		});
+
+		for(var i=0; i<2; i++) {
+			this.card_info.options;
+		};
 	}
 
 	static get styles() {
-		return css`
-			p {
+		return [
+			...super.styles, 
+			css`
+			:host {
 				display: block;
 			}
-		`;
+			p {
+				display: block;
+				border: 2px;
+				padding: 5px;
+			}
+			.button {
+				display: inline-flex;
+				border: 2px;
+				padding: 2px;
+			}`
+		];
 	} 
 
 	render() {
 		return html`
-			<label id="phrase" name="phrase">${this.phrase} Question</label>
-			<button id="option1">${options[0].value} Yes</button> 
-			<button id="option2">${options.getvalue[1]} No</button>
+		<accent-card>
+			<div slot="phrase" name="phrase">${this.phrase} Question</div>
+			${this.options.map(item => html`
+			<button id="option">${item.value} </button>`)}
+			<!-- <button id="option1">${options[0].value} Yes</button> 
+			<button id="option2">${options.getvalue[1]} No</button> -->
+		</accent-card>
 		`
 	}
 }
