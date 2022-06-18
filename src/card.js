@@ -33,9 +33,9 @@ class XCard extends LitElement {
 		});
 	}
 
-	static getCard(input) {
-		this.phrase = input;
-		this.card_info = input;
+	static getCard() {
+		this.card_info = [this.phrase, this.num_Options, this.options]
+		return this.card_info;
 	}
 
 	async loadCard() {
@@ -78,9 +78,10 @@ class XCard extends LitElement {
 	render() {
 		return html`
 		<accent-card>
-			<div slot="phrase" name="phrase">${this.phrase} Question</div>
+			<div slot="phrase">${this.phrase} Question</div>
 			${this.options.map(item => html`
-			<button name="option">${item.value} </button>`)}
+				<button name="option">${item.value} </button>
+			`)}
 			<!-- <button id="option1">${options[0].value} Yes</button> 
 			<button id="option2">${options.getvalue[1]} No</button> -->
 		</accent-card>
