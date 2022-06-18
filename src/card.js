@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import '@lrnwebcomponents/accent-card/accent-card.js';
 
 class XCard extends LitElement {
 	static get properties() {
@@ -64,28 +63,26 @@ class XCard extends LitElement {
 			}
 			p {
 				display: block;
-				border: 2px;
+				border: 2px solid black;
 				padding: 5px;
 			}
 			.button {
 				display: inline-flex;
-				border: 2px;
+				border: 2px solid green;
 				padding: 2px;
 			}`
-		];
+		]; 
 	} 
 
 	render() {
 		return html`
-		<accent-card>
-			<div slot="phrase">${this.phrase} Question</div>
+		<p><label id="phrase">${this.phrase} Question</label>
 			${this.options.map(item => html`
 				<button name="option">${item.value} </button>
 			`)}
 			<!-- <button id="option1">${options[0].value} Yes</button> 
 			<button id="option2">${options.getvalue[1]} No</button> -->
-		</accent-card>
-		`
+		</p>`;		
 	}
 }
 
