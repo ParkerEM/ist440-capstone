@@ -21,7 +21,7 @@ class XCard extends LitElement {
 		this.phrase = 'Do you know what you want?';
 		this.endpoint = '/api/';
 		this.num_Options = 2;
-		this.options = [{key: 002, value: Yes}, {key: 003, value: No}];
+		this.options = [{key: 2, value: Yes}, {key: 3, value: No}];
 		this.card_info = [];
 		this.card_id = '';
 	}
