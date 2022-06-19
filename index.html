@@ -34,9 +34,10 @@
   <button id="start">Start Assessment</button>
   <x-card id="card1" phrase="Do you know what you want?"></x-card>
   <script type="module">
-    import "./src/Card.js"; 
+    import "./src/X-Card.js"; 
     document.querySelector('#start').addEventListener('click', e => {
       document.querySelector('#card1').getCard();
+      // document.querySelector('#card1').loadCard(001);
     });
     // document.querySelector('#card1').phrase = "Do you know what you want?";
 </script>

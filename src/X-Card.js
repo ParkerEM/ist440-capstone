@@ -8,6 +8,7 @@ class XCard extends LitElement {
 			num_Options: {},
 			options: { type: Array },
 			card_info: { type: Array },
+			card_id: {},
 		}
 	}
 
@@ -20,8 +21,9 @@ class XCard extends LitElement {
 		this.phrase = 'Do you know what you want?';
 		this.endpoint = '/api/';
 		this.num_Options = 2;
-		this.options = [Yes, No];
+		this.options = [{key: 002, value: Yes}, {key: 003, value: No}];
 		this.card_info = [];
+		this.card_id = '';
 	}
 
 	updated(changedProperties) {
@@ -33,15 +35,16 @@ class XCard extends LitElement {
 	}
 
 	static getCard() {
-		this.card_info = [this.phrase, this.num_Options, this.options]
+		this.card_info = [this.card_id, this.phrase, this.num_Options, this.options]
 		return this.card_info;
 	}
 
-	async loadCard() {
-		// await fetch(this.endpoint).then(res => res.json())
+	async loadCard(input) {
+		// await fetch('&{this.endpoint}?q=${input}').then(res => res.json())
 		// .then(data => {
 		// 	this.card_info = [];
 		// 	const results = {
+		// 		card_id: data.ID.value,
 		// 		phrase: data.phrase.value,
 		// 		num_Options: data.num_Options.value,
 		// 		options: data.options,
@@ -71,14 +74,14 @@ class XCard extends LitElement {
 				border: 2px solid green;
 				padding: 2px;
 			}`
-		]; 
+		];
 	} 
 
 	render() {
 		return html`
 		<p><label id="phrase">${this.phrase} Question</label>
 			${this.options.map(item => html`
-				<button name="option">${item.value} </button>
+				<button id="${item.key}" onclick="loadCard(item.key)" >${item.value} </button>
 			`)}
 			<!-- <button id="option1">${options[0].value} Yes</button> 
 			<button id="option2">${options.getvalue[1]} No</button> -->
