@@ -31,11 +31,14 @@
   <h2>IST 440 Group 6</h2>
   <h3>Christian Munoz, Sean Gold, Elliot Parker</h3>
   <p>This is the site for the Group 6 capstone project in IST 440</p>
+  <button id="start">Start Assessment</button>
   <x-card id="card1" phrase="Do you know what you want?"></x-card>
   <script type="module">
-    import "./src/Card.js";
+    import "./src/Card.js"; 
+    document.querySelector('#start').addEventListener('click', e => {
+      document.querySelector('#card1').getCard();
+    });
     // document.querySelector('#card1').phrase = "Do you know what you want?";
-    document.querySelector('#card1').getCard(); 
 </script>
 </body>
 </html>
