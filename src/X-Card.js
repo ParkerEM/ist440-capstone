@@ -8,7 +8,7 @@ class XCard extends LitElement {
 			num_Options: {},
 			options: { type: Array },
 			card_info: { type: Array },
-			card_id: {},
+			card_ID: {},
 		}
 	}
 
@@ -19,11 +19,11 @@ class XCard extends LitElement {
 	constructor() {
 		super();
 		this.phrase = 'Do you know what you want?';
-		this.endpoint = '/api/';
+		this.endpoint = '/api/getCard.js';
 		this.num_Options = 2;
 		this.options = [{key: 2, value: Yes}, {key: 3, value: No}];
 		this.card_info = [];
-		this.card_id = '';
+		this.card_ID = '';
 	}
 
 	updated(changedProperties) {
@@ -40,11 +40,11 @@ class XCard extends LitElement {
 	}
 
 	async loadCard(input) {
-		// await fetch('&{this.endpoint}?q=${input}').then(res => res.json())
-		// .then(data => {
+		var qString = `cardID=${input}`;
+		// await fetch(`&{this.endpoint}?${qString}`).then(res => res.json()).then(data => {
 		// 	this.card_info = [];
 		// 	const results = {
-		// 		card_id: data.ID.value,
+		// 		card_ID: data.ID.value,
 		// 		phrase: data.phrase.value,
 		// 		num_Options: data.num_Options.value,
 		// 		options: data.options,
@@ -58,9 +58,7 @@ class XCard extends LitElement {
 	}
 
 	static get styles() {
-		return [
-			...super.styles, 
-			css`
+		return [css`
 			:host {
 				display: block;
 			}
@@ -73,8 +71,8 @@ class XCard extends LitElement {
 				display: inline-flex;
 				border: 2px solid green;
 				padding: 2px;
-			}`
-		];
+			}
+		`];
 	} 
 
 	render() {
