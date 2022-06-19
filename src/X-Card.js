@@ -21,7 +21,7 @@ class XCard extends LitElement {
 		this.phrase = 'Do you know what you want?';
 		this.endpoint = '/api/getCard.js';
 		this.num_Options = 2;
-		this.options = [{key: 2, value: Yes}, {key: 3, value: No}];
+		this.options = [{num: 2, text: "Yes"}, {num: 3, text: "No"}];
 		this.card_info = [];
 		this.card_ID = '';
 	}
@@ -41,16 +41,18 @@ class XCard extends LitElement {
 
 	async loadCard(input) {
 		var qString = `cardID=${input}`;
-		// await fetch(`&{this.endpoint}?${qString}`).then(res => res.json()).then(data => {
-		// 	this.card_info = [];
-		// 	const results = {
-		// 		card_ID: data.ID.value,
-		// 		phrase: data.phrase.value,
-		// 		num_Options: data.num_Options.value,
-		// 		options: data.options,
-		// 	}
-		// 	this.card_info.push(results);
-		// });
+		await fetch(`&{this.endpoint}?${qString}`).then(res => res.json()).then(data => {
+			this.card_info = [];
+			const results = {
+				card_ID: data.cardID.value,
+				phrase: data.phrase.value,
+				num_Options: data.num_Options.value,
+				options: data.options,
+			}
+			this.card_info.push(results);
+		});
+		
+		return this.card_info;
 
 		// for(var i=0; i<2; i++) {
 		// 	this.card_info.options;
@@ -79,7 +81,7 @@ class XCard extends LitElement {
 		return html`
 		<p><label id="phrase">${this.phrase} Question</label>
 			${this.options.map(item => html`
-				<button id="${item.key}" onclick="loadCard(item.key)" >${item.value} </button>
+				<button id="b-${item.num}" onclick="loadCard(item.num)" >${item.text} </button>
 			`)}
 			<!-- <button id="option1">${options[0].value} Yes</button> 
 			<button id="option2">${options.getvalue[1]} No</button> -->
