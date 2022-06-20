@@ -41,7 +41,7 @@ class XCard extends LitElement {
 
 	async loadCard(input) {
 		var qString = `cardID=${input}`;
-		await fetch(`&{this.endpoint}?${qString}`).then(res => res.json()).then(data => {
+		await fetch(`${this.endpoint}?${qString}`).then(res => res.json()).then(data => {
 			this.card_info = [];
 			const results = {
 				card_ID: data.cardID.value,
@@ -51,9 +51,8 @@ class XCard extends LitElement {
 			}
 			this.card_info.push(results);
 		});
-		
-		return this.card_info;
 
+		return this.card_info;
 		// for(var i=0; i<2; i++) {
 		// 	this.card_info.options;
 		// };
