@@ -46,19 +46,22 @@
   <br />
   <button class="flip" id="start" onclick="showCard()">Start Assessment</button>
   <br /> 
-  <x-card id="card" phrase="Do you know what you want?"></x-card>
+  <x-card id="card" ></x-card>
   <script>
     function showCard() {
       document.getElementById("card").style.display = "block";
     }
   </script>
-  <script type="module">
+  <script type="module" src="./src/X-Card.js">
     import "./src/X-Card.js"; 
     document.querySelector('#start').addEventListener('click', e => {
-      document.querySelector('#card1').getCard();
+      document.querySelector('#card').phrase = "Do you know what you want?";
+      document.querySelector('#card').card_ID = 1;
+      document.querySelector('#card').num_Options = 2;
+      document.querySelector('#card').getCard();
       // document.querySelector('#card').loadCard(1);
     });
-    // document.querySelector('#card').phrase = "Do you know what you want?";
+    // phrase="Do you know what you want?"
 </script>
 </body>
 </html>
