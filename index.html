@@ -18,7 +18,7 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
-    button {
+    button, .flip {
 			display: inline-block;
 			border: 2px solid green;
 			padding:8px 16px;
@@ -27,12 +27,10 @@
 			text-align:center;
 			white-space:nowrap;
 		}
-    #card, .flip {
+    #card {
 			border: 2px solid black;
 			padding: 5px;
-    }
-    #card {
-      display: hidden,
+      width: 33.33333%
     }
   </style>
   <title>ist440-capstone</title>
@@ -45,13 +43,13 @@
   <p>This is the site for the Group 6 capstone project in IST 440</p>
   <br />
   <button class="flip" id="start" onclick="showCard()">Start Assessment</button>
-  <br /> 
-  <x-card id="card" ></x-card>
   <script>
     function showCard() {
-      document.getElementById("card").style.display = "block";
+      document.getElementById("card").style.display = "inline-block";
     }
   </script>
+  <br /> 
+  <x-card id="card" ></x-card>
   <script type="module" src="./src/X-Card.js">
     import "./src/X-Card.js"; 
     document.querySelector('#start').addEventListener('click', e => {
@@ -61,7 +59,6 @@
       document.querySelector('#card').getCard();
       // document.querySelector('#card').loadCard(1);
     });
-    // phrase="Do you know what you want?"
 </script>
 </body>
 </html>

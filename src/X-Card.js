@@ -70,7 +70,7 @@ class XCard extends LitElement {
 			}
 			.x-card {
 				box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-			} */
+			} 
 			button {
 				display: inline-block;
 				border: 2px solid green;
@@ -79,7 +79,7 @@ class XCard extends LitElement {
 				background-color:inherit;
 				text-align:center;
 				white-space:nowrap;
-			}
+			} */
 		`];
 	} 
 
@@ -87,7 +87,7 @@ class XCard extends LitElement {
 		return html`
 		<div class="x-card">
 			<h3 id="phrase">${this.phrase} Question</h3>
-			<br>
+			<br />
 			${this.card_info.options.map(item => html`
 				<button id="btn-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
 			`)}
