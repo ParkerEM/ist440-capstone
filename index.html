@@ -18,12 +18,21 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+    button {
+			display: inline-block;
+			border: 2px solid green;
+			padding:8px 16px;
+			color:inherit;
+			background-color:inherit;
+			text-align:center;
+			white-space:nowrap;
+		}
     #card, .flip {
 			border: 2px solid black;
 			padding: 5px;
     }
     #card {
-      display: none,
+      display: hidden,
     }
   </style>
   <title>ist440-capstone</title>
@@ -34,9 +43,9 @@
   <h2>IST 440 Group 6</h2>
   <h3>Christian Munoz, Sean Gold, Elliot Parker</h3>
   <p>This is the site for the Group 6 capstone project in IST 440</p>
-  <br>
+  <br />
   <button class="flip" id="start" onclick="showCard()">Start Assessment</button>
-  <br> 
+  <br /> 
   <x-card id="card" phrase="Do you know what you want?"></x-card>
   <script>
     function showCard() {

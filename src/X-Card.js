@@ -63,15 +63,14 @@ class XCard extends LitElement {
 			:host {
 				display: block;
 			}
-			div {
+			/* div {
 				display: block;
 				border: 2px solid black;
 				padding: 5px;
-				
 			}
 			.x-card {
 				box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-			}
+			} */
 			button {
 				display: inline-block;
 				border: 2px solid green;
@@ -86,10 +85,11 @@ class XCard extends LitElement {
 
 	render() {
 		return html`
-		<div class="x-card"><h3 id="phrase">${this.phrase} Question</h3>
+		<div class="x-card">
+			<h3 id="phrase">${this.phrase} Question</h3>
 			<br>
 			${this.card_info.options.map(item => html`
-				<button id="b-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
+				<button id="btn-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
 			`)}
 		</div>`;		
 	}
