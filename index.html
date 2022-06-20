@@ -18,6 +18,13 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+    #card, .flip {
+			border: 2px solid black;
+			padding: 5px;
+    }
+    #card {
+      display: none,
+    }
   </style>
   <title>ist440-capstone</title>
 </head>
@@ -28,14 +35,19 @@
   <h3>Christian Munoz, Sean Gold, Elliot Parker</h3>
   <p>This is the site for the Group 6 capstone project in IST 440</p>
   <br>
-  <button id="start">Start Assessment</button>
+  <button class="flip" id="start" onclick="showCard()">Start Assessment</button>
   <br> 
   <x-card id="card" phrase="Do you know what you want?"></x-card>
+  <script>
+    function showCard() {
+      document.getElementById("card").style.display = "block";
+    }
+  </script>
   <script type="module">
     import "./src/X-Card.js"; 
     document.querySelector('#start').addEventListener('click', e => {
-      // document.querySelector('#card1').getCard();
-      document.querySelector('#card').loadCard(1);
+      document.querySelector('#card1').getCard();
+      // document.querySelector('#card').loadCard(1);
     });
     // document.querySelector('#card').phrase = "Do you know what you want?";
 </script>

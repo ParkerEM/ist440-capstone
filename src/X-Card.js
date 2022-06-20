@@ -40,7 +40,7 @@ class XCard extends LitElement {
 	}
 
 	async loadCard(input) {
-		var qString = `cardID=${input}`;
+		var qString = `cardID=${input.toString()}`; 
 		await fetch(`${this.endpoint}?${qString}`).then(res => res.json()).then(data => {
 			this.card_info = [];
 			const results = {
@@ -67,11 +67,19 @@ class XCard extends LitElement {
 				display: block;
 				border: 2px solid black;
 				padding: 5px;
+				
 			}
-			.button {
-				display: inline-flex;
+			.x-card {
+				box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+			}
+			button {
+				display: inline-block;
 				border: 2px solid green;
-				padding: 2px;
+				padding:8px 16px;
+				color:inherit;
+				background-color:inherit;
+				text-align:center;
+				white-space:nowrap;
 			}
 		`];
 	} 
@@ -80,11 +88,9 @@ class XCard extends LitElement {
 		return html`
 		<div class="x-card"><h3 id="phrase">${this.phrase} Question</h3>
 			<br>
-			${this.options.map(item => html`
+			${this.card_info.options.map(item => html`
 				<button id="b-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
 			`)}
-			<!-- <button id="option1">${options[0].value} Yes</button> 
-			<button id="option2">${options.getvalue[1]} No</button> -->
 		</div>`;		
 	}
 }
