@@ -60,10 +60,10 @@ class XCard extends LitElement {
 
 	static get styles() {
 		return [css`
-			:host {
+			/* :host {
 				display: block;
 			}
-			/* div {
+			div {
 				display: block;
 				border: 2px solid black;
 				padding: 5px;
