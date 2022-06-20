@@ -19,7 +19,7 @@ class XCard extends LitElement {
 	constructor() {
 		super();
 		this.phrase = 'Do you know what you want?';
-		this.endpoint = '/api/getCard.js';
+		this.endpoint = '/api/getCard';
 		this.num_Options = 2;
 		this.options = [{num: 2, text: "Yes"}, {num: 3, text: "No"}];
 		this.card_info = [];
@@ -46,8 +46,8 @@ class XCard extends LitElement {
 			const results = {
 				card_ID: data.cardID.value,
 				phrase: data.phrase.value,
-				num_Options: data.num_Options.value,
-				options: data.options,
+				num_Options: data["num_Options"],
+				options: data["options"],
 			}
 			this.card_info.push(results);
 		});
@@ -63,7 +63,7 @@ class XCard extends LitElement {
 			:host {
 				display: block;
 			}
-			p {
+			div {
 				display: block;
 				border: 2px solid black;
 				padding: 5px;

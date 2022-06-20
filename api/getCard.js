@@ -2,12 +2,11 @@
 import { PSDB } from 'planetscale-node';
 
 export default async function handler(req, res) {
-  // connects to the database
+  // connects to the wsidn_ist440 database
   const conn = new PSDB('main');
 
-  // queries a single card from wsidn_ist440 db
+  // queries a single card from db
   const { cardID } = req.query;
-
   const [dbResult] = await conn.query('SELECT * FROM CARDS WHERE cardID=:cardID', cardID);
 
   // cache
