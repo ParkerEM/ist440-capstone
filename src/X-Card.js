@@ -78,13 +78,14 @@ class XCard extends LitElement {
 
 	render() {
 		return html`
-		<p><label id="phrase">${this.phrase} Question</label>
+		<div class="x-card"><h3 id="phrase">${this.phrase} Question</h3>
+			<br>
 			${this.options.map(item => html`
-				<button id="b-${item.num}" onclick="loadCard(item.num)" >${item.text} </button>
+				<button id="b-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
 			`)}
 			<!-- <button id="option1">${options[0].value} Yes</button> 
 			<button id="option2">${options.getvalue[1]} No</button> -->
-		</p>`;		
+		</div>`;		
 	}
 }
 
