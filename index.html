@@ -18,19 +18,20 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
-    button, .flip {
+    button {
 			display: inline-block;
 			border: 2px solid green;
 			padding:8px 16px;
 			color:inherit;
 			background-color:inherit;
 			text-align:center;
-			white-space:nowrap;
 		}
     #card {
 			border: 2px solid black;
 			padding: 5px;
-      width: 33.33333%
+      width: 33.33333%;
+      font-family: sans-serif;
+      text-align: center;
     }
   </style>
   <title>ist440-capstone</title>
@@ -42,12 +43,7 @@
   <h3>Christian Munoz, Sean Gold, Elliot Parker</h3>
   <p>This is the site for the Group 6 capstone project in IST 440</p>
   <br />
-  <button class="flip" id="start" onclick="showCard()">Start Assessment</button>
-  <script>
-    function showCard() {
-      document.getElementById("card").style.display = "inline-block";
-    }
-  </script>
+  <button id="start">Start Assessment</button>
   <br /> 
   <x-card id="card" ></x-card>
   <script type="module" src="./src/X-Card.js">

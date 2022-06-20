@@ -28,8 +28,8 @@ class XCard extends LitElement {
 
 	updated(changedProperties) {
 		changedProperties.forEach((old, propName) => {
-			if (propName === 'phrase') {
-				this.getCard(this[propName]);
+			if (propName === 'card_ID') {
+				this.loadCard(this[propName]);
 			}
 		});
 	}
@@ -43,6 +43,7 @@ class XCard extends LitElement {
 		var qString = `cardID=${input.toString()}`; 
 		await fetch(`${this.endpoint}?${qString}`).then(res => res.json()).then(data => {
 			this.card_info = [];
+			this.options = [];
 			const results = {
 				card_ID: data.cardID.value,
 				phrase: data.phrase.value,
@@ -56,6 +57,23 @@ class XCard extends LitElement {
 		// for(var i=0; i<2; i++) {
 		// 	this.card_info.options;
 		// };
+	}
+	async loadOption(e) {
+		const cardID = e.target.getAttribute('id');
+		var qString = `cardID=${cardID.toString()}`; 
+		await fetch(`${this.endpoint}?${qString}`).then(res => res.json()).then(data => {
+			this.card_info = [];
+			this.options = [];
+			const results = {
+				card_ID: data.cardID.value,
+				phrase: data.phrase.value,
+				num_Options: data["num_Options"],
+				options: data["options"],
+			}
+			this.card_info.push(results);
+		});
+
+		return this.card_info;
 	}
 
 	static get styles() {
@@ -89,7 +107,7 @@ class XCard extends LitElement {
 			<h3 id="phrase">${this.phrase} Question</h3>
 			<br />
 			${this.card_info.options.map(item => html`
-				<button id="btn-${item.num}" onclick="loadCard(item.num)">${item.text}</button>
+				<button id="${item.num}" @click="${this.loadOption}">${item.text} BTN</button>
 			`)}
 		</div>`;		
 	}
