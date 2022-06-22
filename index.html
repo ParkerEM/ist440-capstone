@@ -25,7 +25,7 @@
 			background-color: green;
 			text-align: center;
 		}
-    #card {
+    #card, p {
       display: inline-block;
 			border: 2px solid black;
 			padding: 10px;
@@ -44,12 +44,12 @@
   <br />
   <button id="start">Start Assessment</button>
   <br /> 
-  <x-card id="card" >
+  <!-- <x-card id="card" >
     <h3>Do you know what you want?</h3>
     <button>Yes</button>
     <button>No</button>
   </x-card>
-  <!-- <script type="module" src="./src/X-Card.js">
+  <script type="module" src="./src/X-Card.js">
     import "./src/X-Card.js"; 
     document.querySelector('#start').addEventListener('click', e => {
       document.querySelector('#card').phrase = "Do you know what you want?";
@@ -59,5 +59,9 @@
       document.querySelector('#card').loadCard(1);
     });
 </script> -->
+<p><h3>Do you know what you want?</h3>
+  <button>Yes</button>
+  <button>No</button>
+</p>
 </body>
 </html>
