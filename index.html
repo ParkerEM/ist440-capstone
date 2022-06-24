@@ -16,7 +16,9 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      background-color: #ededed;
+      background-image: url('./mountains-1752433_1920.jpg');
+      background-position: 0px 0px;
+      background-size: auto;
     }
     button {
 			display: inline-block;
@@ -24,13 +26,16 @@
 			padding:8px 16px;
 			background-color: green;
 			text-align: center;
+      box-shadow: 1px 6px 0px;
 		}
-    #card {
+    .card {
       display: inline-block;
 			border: 2px solid black;
 			padding: 10px;
       width: 33.33333%;
+      min-height: 100px;
       text-align: center;
+      box-shadow: 1px 6px 0px;
     }
   </style>
   <title>ist440-capstone</title>
@@ -44,13 +49,13 @@
   <br />
   <button id="start">Start Assessment</button>
   <br /> 
-  <!-- <x-card id="card" >
+  <x-card class="card" id="card" >
     <h3>Do you know what you want?</h3>
     <button>Yes</button>
     <button>No</button>
   </x-card>
   <script type="module" src="./src/X-Card.js">
-    import "./src/X-Card.js"; 
+    import './src/X-Card.js'; 
     document.querySelector('#start').addEventListener('click', e => {
       document.querySelector('#card').phrase = "Do you know what you want?";
       document.querySelector('#card').card_ID = 1;
@@ -58,8 +63,8 @@
       // document.querySelector('#card').getCard();
       document.querySelector('#card').loadCard(1);
     });
-</script> -->
-<div id="card"><h3>Do you know what you want?</h3>
+</script>
+<div class="card"><h3>Do you know what you want?</h3>
   <button>Yes</button>
   <button>No</button>
 </div>
